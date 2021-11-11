@@ -124,8 +124,14 @@ syntax match complexSet  /\\C/ conceal cchar=ℂ containedin=ALL
 "                      Concealing equations and aligns
 "===============================================================================
 
-syntax match myLeftCurlyBrackets  /\\{/ contained conceal cchar={
-syntax match myRightCurlyBrackets /\\}/ contained conceal cchar=}
+syntax match myLeftCurlyBrackets  /\\{/ 
+    \ containedin=texMathZoneX
+    \ conceal cchar={
+
+syntax match myRightCurlyBrackets /\\}/ 
+    \ containedin=texMathZoneX
+    \ conceal cchar=}
+
 syntax match mySpaceA             /\\;/ contained conceal 
 
 " all groups inside an equation (or align)
@@ -158,6 +164,13 @@ syntax region myEqEnv
     \ concealends
 
 "===============================================================================
+"              scpecial characters as superscripts or subscripts
+"===============================================================================
+syntax match subEq /\(_{.*\)\@<==/ conceal cchar=₌ containedin=ALL
+syntax match subIn /\(_{.*\)\@<= \\in / conceal cchar=∊ containedin=ALL
+
+
+"===============================================================================
 "                Concealing elements on a way I find reasonable
 "===============================================================================
 
@@ -170,6 +183,7 @@ syntax match myItem /\\item/
 "                                 Colorscheme
 "===============================================================================
 syntax match headerParameters /^\\usepackage/                    containedin=ALL
+syntax match headerParameters /^\\input/                         containedin=ALL
 syntax match headerParameters /^\\usetikzlibrary/                containedin=ALL
 syntax match headerParameters /^\\setcounter/                    containedin=ALL
 syntax match headerParameters /^\\DeclareMathOperator/           containedin=ALL
@@ -177,6 +191,7 @@ syntax match headerParameters /^\\theoremstyle/                  containedin=ALL
 syntax match headerParameters /^\\newcommand/                    containedin=ALL
 syntax match headerParameters /^\\newtheorem/                    containedin=ALL
 syntax match headerParameters /^\\renewcommand/                  containedin=ALL
+syntax match headerParameters /^\\DeclareTextFontCommand/        containedin=ALL
 
 syntax match dateAuthorTitle  /^\\\(date\|author\|title\)/       containedin=ALL
 
@@ -198,3 +213,9 @@ hi Constant            ctermfg=88  ctermbg=none
 hi Comment             ctermfg=28  ctermbg=none
 hi headerParameters    ctermfg=142 ctermbg=none
 hi dateAuthorTitle     ctermfg=111 ctermbg=none
+
+" Julia mono font doesn't have italics. So we better go with underline
+" as substitute
+hi texItalStyle        cterm=underline
+"hi myItalic            ctermfg=240 ctermbg=none cterm=italic
+
