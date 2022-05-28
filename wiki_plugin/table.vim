@@ -10,6 +10,6 @@ function! MyPrintTable()
 endfunction
 
 
-inoremap <leader>t :call MyPrintTable() <cr>
+inoremap <leader>t <esc>:call MyPrintTable() <cr>
 
 
