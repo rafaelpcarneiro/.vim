@@ -1,9 +1,17 @@
 "set foldlevel=1
+set noexpandtab  "in that way I can run python code without worrying
 
 " Copy the scala file to /tmp/tmp.scala file
-nnoremap <leader>c ?{{{<cr>j0V/}}}<cr>k:w! /tmp/tmp.scala<CR>
+"nnoremap <leader>c ?{{{<cr>j0V/}}}<cr>k:w! /tmp/tmp.scala<CR>
+nnoremap <buffer> <leader>c
+    \ /}}}<CR>ma%j0V/}}}<CR>k:w! /tmp/tmp.scala<CR>
+"nnoremap <buffer> <leader>c
+"    \ /}}}<CR>ma%j0V/}}}<CR>k:w! /tmp/tmp.py<CR>
  
 " Feed scala REPL with the temporary file criated above
-" and print the output just below the chunk of code
-" inside {{{Scala ... }}}.
-nnoremap <leader>r /}}}<cr>jo*Scala Returns* <esc>:put =system('scala /tmp/tmp.scala')<cr>
+" and print the output just below the delimiter
+" {{{class "language-scala" ... }}}.
+nnoremap <buffer> <leader>r 
+    \ 'ao*Scala Returns* <esc>:put =system('scala /tmp/tmp.scala')<CR>
+"nnoremap <buffer> <leader>r 
+"    \ 'ao*Python Returns* <esc>:put =system('python /tmp/tmp.py')<CR>
