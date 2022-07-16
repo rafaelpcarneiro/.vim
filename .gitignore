@@ -1,1 +1,4 @@
 .netrwhist
+
+# pack/ directory is where wiki vim plugin is located
+pack/**
