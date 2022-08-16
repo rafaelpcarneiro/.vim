@@ -1,17 +1,7 @@
-nnoremap \c I<!-- <esc>A--><esc>
+nnoremap <buffer> <leader>c O<!-- <esc>jo--><esc>
 
-inoremap bf<tab>  <b> </b><esc>Bhi
-inoremap if<tab>  <i> </i><esc>Bhi
-inoremap em<tab>  <em> </em><esc>Bhi
+inoremap <buffer> im<tab>  <img src="<++>" alt="<++>" />
+inoremap <buffer> p<tab>  <p></p><esc>?<<cr>i<cr><esc>O<tab>
+inoremap <buffer> a<tab>  <a href="#"></a><esc>?<cr>i<cr><esc>O<tab>
 
-
-inoremap p<tab>   <p><cr></p><esc>O
-
-inoremap h<tab>   <h1> </h1><esc>Bhi
-inoremap hh<tab>  <h2> </h2><esc>Bhi
-
-inoremap im<tab>  <img src="<++>" alt="<++>" />
-
-
-inoremap t<tab> <><esc>i
-nnoremap <tab><tab> ?<<cr>wyw<esc>A  </<esc>pa><esc>?<<esc>hhi
+inoremap <buffer> <leader><tab> <esc>byei<<esc>ea></<esc>pa><esc>?<<cr>i
